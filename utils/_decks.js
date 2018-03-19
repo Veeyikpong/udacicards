@@ -6,7 +6,6 @@ function initializeWithSampleDecks(){
 	const sampleDeck = {
 		React: {
 			title:'React',
-			description:'React',
 			cards:[
 				{
 					question: 'What is React?',
@@ -20,7 +19,6 @@ function initializeWithSampleDecks(){
 		},
 		Javascript: {
 			title:'JavaScript',
-			description:'Javascript',
 			cards:[
 				{
 					question: 'What is a closure?',

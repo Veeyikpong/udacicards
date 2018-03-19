@@ -7,7 +7,9 @@ import reducer from './reducers'
 import {Constants} from 'expo'
 import {TabNavigator, StackNavigator} from 'react-navigation'
 import DeckDetails from './components/DeckDetails'
+import NewDeck from './components/NewDeck'
 import {white,purple} from './utils/colors'
+import {MaterialCommunityIcons,MaterialIcons} from '@expo/vector-icons'
 
 function UdaciStatusBar({backgroundColor, ...props}){
   return(
@@ -22,12 +24,14 @@ const Tabs = TabNavigator({
     screen:DeckList,
      navigationOptions:{
       tabBarLabel:'DECKS',
+      tabBarIcon: ({tintColor}) => <MaterialCommunityIcons name='cards' size={30} color={tintColor}/>
     }
   },
   NewDeck:{
-    screen:DeckList,
+    screen:NewDeck,
      navigationOptions:{
       tabBarLabel:'NEW DECK',
+      tabBarIcon: ({tintColor}) => <MaterialIcons name='add-circle' size={30} color={tintColor}/>
     }
   }
 },{
@@ -38,6 +42,7 @@ const Tabs = TabNavigator({
     activeTintColor: Platform.OS === 'ios' ? purple:white,
     style:{
       height:56,
+      marginBottom:-15,
       backgroundColor: Platform.OS === 'ios'?white:purple,
       shadowOffset:{
         width:0,
@@ -58,7 +63,8 @@ const MainNavigator = StackNavigator({
     navigationOptions:{
       headerTintColor:white,
       headerStyle:{
-        backgroundColor:purple
+        backgroundColor:purple,
+        marginTop:-50
       }
     }
   }

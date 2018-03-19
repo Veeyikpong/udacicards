@@ -1,8 +1,15 @@
 import React from 'react'
-import {View,Text} from 'react-native'
+import {View,Text,StyleSheet} from 'react-native'
 
 class DeckDetails extends React.Component{
+
+	static navigationOptions = ({ navigation }) => ({
+    	title: `${navigation.state.params.title}`,
+     	headerTitleStyle : {textAlign: 'center', alignSelf:'center'},
+    });
+
 	render(){
+		const {navigation} = this.props
 
 		return(
 			<View>
@@ -14,4 +21,7 @@ class DeckDetails extends React.Component{
 	}
 }
 
+const styles = StyleSheet.create({
+
+})
 export default DeckDetails

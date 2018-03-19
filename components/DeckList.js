@@ -47,17 +47,14 @@ renderItem = ({item}) => {
 
 
 		return(
-			<View >
-
+			<View style={styles.container}>
 				<FlatList style={styles.list}
 					data={listOfDecks}
 					extraData={this.state}
 					renderItem={this.renderItem}
 					keyExtractor={(item,index) => index}
 					/>
-
 			</View>
-
 		)
 	}
 }
