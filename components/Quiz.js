@@ -93,7 +93,7 @@ class Quiz extends React.Component{
 				<FlipCard
 					style={styles.card}
 					friction={6}
-					perspective={1000}
+					perspective={1500}
 					flipHorizontal={true}
 					flipVertical={false}
 					flip={cardFlip}
@@ -177,7 +177,8 @@ const styles = StyleSheet.create({
 	},
 	questionAnswer:{
 		flex:2,
-		justifyContent:'center'
+		justifyContent:'center',
+		alignItems:'center'
 	},
 	bottom:{
 		flex:1,

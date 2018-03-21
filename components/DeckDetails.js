@@ -1,8 +1,10 @@
 import React from 'react'
 import {View,Text,StyleSheet,TouchableOpacity,Alert} from 'react-native'
 import {connect} from 'react-redux'
-import {black,gray,white,darkBlue} from '../utils/colors'
+import {black,gray,white,darkBlue,red,warmBlue} from '../utils/colors'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
+import {deleteDeck as deleteDeckAPI}  from '../utils/api'
+import {deleteDeck} from '../actions'
 
 class DeckDetails extends React.Component{
 
@@ -14,9 +16,10 @@ class DeckDetails extends React.Component{
 		}
 	}
 
-	addCard = () => {
+	addCard = (deck) => {
 		this.props.navigation.navigate(
 			'NewCard',
+			{deck:deck}
 		)
 	}
 
@@ -29,6 +32,25 @@ class DeckDetails extends React.Component{
 				{deck:deck}
 			)
 		}
+	}
+
+	deleteDeck = (deck) => {
+		const {dispatch} = this.props
+
+		Alert.alert(
+		  'Confirm to delete deck?',
+		  '',
+		  [
+		  	{text: 'Cancel', onPress: () => {}},
+		    {text: 'OK', onPress: () => {
+		    	deleteDeckAPI(deck)
+				.then(()=>dispatch(deleteDeck(deck.title)))
+				.then(this.props.navigation.goBack())
+		    }},
+		  ],
+		  { cancelable: false }
+		)
+
 	}
 
 	render(){
@@ -52,11 +74,14 @@ class DeckDetails extends React.Component{
 					</Text>
 				</View>
 				<View style={styles.bottomPart}>
-					<TouchableOpacity style={styles.addCardBtn} onPress={()=>this.addCard()}>
+					<TouchableOpacity style={styles.addCardBtn} onPress={()=>this.addCard(deck)}>
 						<Text style={styles.addCardBtnText}>Add Card</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.startQuizBtn} onPress={()=>this.startQuiz(deck)}>
 						<Text style={styles.startQuizBtnText}>Start Quiz</Text>
+					</TouchableOpacity>
+					<TouchableOpacity style={styles.deleteDeckBtn} onPress={()=>this.deleteDeck(deck)}>
+						<Text style={styles.deleteDeckBtnText}>Delete this deck</Text>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -93,8 +118,8 @@ const styles = StyleSheet.create({
 		alignSelf:'center'
 	},
 	addCardBtn:{
-		backgroundColor:white,
-		borderColor:black,
+		backgroundColor:warmBlue,
+		borderColor:'transparent',
 		borderRadius:10,
 		borderWidth:1,
 		padding:10,
@@ -103,12 +128,13 @@ const styles = StyleSheet.create({
 		marginBottom:10,
 	},
 	addCardBtnText:{
-		color:black,
+		color:white,
 		fontSize:25,
 		alignSelf:'center'
 	},
 	startQuizBtn:{
 		backgroundColor:black,
+		borderColor:'transparent',
 		borderRadius:10,
 		borderWidth:1,
 		padding:10,
@@ -119,8 +145,27 @@ const styles = StyleSheet.create({
 		color:white,
 		fontSize:25,
 		alignSelf:'center'
+	},
+	deleteDeckBtn:{
+		backgroundColor:red,
+		borderColor:'transparent',
+		borderRadius:10,
+		borderWidth:1,
+		padding:10,
+		paddingRight:30,
+		paddingLeft:30,
+		marginTop:50,
+	},
+	deleteDeckBtnText:{
+		color:white,
+		fontSize:25,
+		alignSelf:'center'
 	}
 })
 
 
-export default DeckDetails
+function mapStateToProps (decks) {
+  return {decks}
+}
+
+export default connect(mapStateToProps,null)(DeckDetails)

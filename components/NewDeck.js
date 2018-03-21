@@ -1,7 +1,7 @@
 import React from 'react'
 import {Text,View,TextInput,TouchableOpacity,StyleSheet,KeyboardAvoidingView,TouchableWithoutFeedback,Keyboard,Alert} from 'react-native'
 import {black,darkBlue,white} from '../utils/colors'
-import {saveDeckTitle} from '../utils/api'
+import {addNewDeck} from '../utils/api'
 import {connect} from 'react-redux'
 import {addDeck} from '../actions'
 
@@ -37,7 +37,8 @@ class NewDeck extends React.Component{
 						cards:[],
 					}
 				}
-				saveDeckTitle(newDeck)
+
+				addNewDeck(newDeck)
 				.then(()=>dispatch(addDeck(newDeck)))
 				.then(this.showSuccessMessage)
 				.then(Keyboard.dismiss())

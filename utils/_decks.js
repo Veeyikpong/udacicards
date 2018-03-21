@@ -34,7 +34,6 @@ function initializeWithSampleDecks(){
 }
 
 export function checkDeckResults (decks) {
-	console.log(decks)
   return decks === null
     ? initializeWithSampleDecks()
     : JSON.parse(decks)

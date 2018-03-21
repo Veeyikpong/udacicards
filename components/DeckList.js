@@ -5,12 +5,12 @@ import {white} from '../utils/colors'
 import {connect} from 'react-redux'
 import {receiveDecks} from '../actions'
 import Deck from './Deck'
+import {AppLoading} from 'expo'
 
 class DeckList extends React.Component{
 
 state = {
 	decks: {},
-    ready: false
   }
 
 	componentWillMount(){
@@ -18,7 +18,6 @@ state = {
 
 		getDecks()
 		.then(decks=>dispatch(receiveDecks(decks)))
-		.then(()=>this.setState(() => ({ready: true})))
 	}
 
 renderItem = ({item}) => {
@@ -36,13 +35,8 @@ renderItem = ({item}) => {
 		const {decks,navigation} = this.props
 	    const listOfDecks = Object.values(decks)
 
-
 		if(!this.props.decks){
-			return (
-				<View>
-				<Text>Not ready</Text>
-				</View>
-			)
+			return <AppLoading/>
 		}
 
 
@@ -74,6 +68,10 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (decks) {
+	console.log(decks)
+	Object.values(decks).map(deck=>{
+		console.log(deck.title)
+	})
   return {decks}
 }
 
