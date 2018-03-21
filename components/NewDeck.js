@@ -65,7 +65,7 @@ class NewDeck extends React.Component{
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
 					<View>
 						<Text style={styles.helloText} >Hello</Text>
-						<Text style={styles.text} >What is the title of your new deck?</Text>
+						<Text style={styles.title} >What is the title of your new deck?</Text>
 						<TextInput style={styles.deckTextInput} placeholder="Deck Title" onChangeText={(text)=>{this.setState({deckTitle:text})}}/>
 						<TouchableOpacity style={styles.submitBtn} onPress={this.addNewDeck}>
 							<Text style={styles.btnText}>Submit</Text>
@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
 		fontWeight:'bold',
 		alignSelf:'center'
 	},
-	text:{
-		fontSize:40,
+	title:{
+		fontSize:35,
 		color:black,
 		marginBottom:10,
 		fontWeight:'bold',
@@ -103,14 +103,13 @@ const styles = StyleSheet.create({
 		fontSize:30,
 		borderColor:black,
 		borderWidth:1,
-		borderRadius:3,
-		marginBottom:1,
+		borderRadius:10,
 	},
 	submitBtn:{
 		padding:10,
 		backgroundColor:darkBlue,
 		alignSelf:'center',
-		borderRadius:5,
+		borderRadius:10,
 		marginTop:20,
 	},
 	btnText:{

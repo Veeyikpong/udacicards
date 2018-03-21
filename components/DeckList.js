@@ -28,7 +28,7 @@ renderItem = ({item}) => {
 //     	</View>)
 
 	return(
-		<Deck title={item.title} cardsCount={item.cards.length} navigation={this.props.navigation}/>
+		<Deck selectedDeck={item} title={item.title} cardsCount={item.cards.length} navigation={this.props.navigation}/>
 	)
   }
 

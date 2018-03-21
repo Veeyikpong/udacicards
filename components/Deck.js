@@ -5,19 +5,18 @@ import {white,black,gray} from '../utils/colors'
 class Deck extends React.Component{
 
 	render(){
-		const {title,cardsCount,navigation} = this.props
+		const {selectedDeck,navigation} = this.props
 		return(
 			<View>
 			<TouchableOpacity style={styles.container} onPress={()=>navigation.navigate(
 				'DeckDetails',
-				{title:title},
-				{cardsCount:cardsCount}
+				{deck:selectedDeck}
 				)}>
 				<Text style={styles.title}>
-					{title}
+					{selectedDeck.title}
 				</Text>
 				<Text style={styles.cardsCount}>
-					{cardsCount} cards
+					{selectedDeck.cards.length} cards
 				</Text>
 			</TouchableOpacity>
 			</View>
