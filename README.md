@@ -118,11 +118,10 @@ This application has been tested throughly and is working fine on <b>IPhone X</b
 │   ├── DeckList.js # Initial view, rendering all the created decks
 │   ├── NewCard.js # Rendering view to add new card to specific deck
 │   ├── NewDeck.js # Rendering view to add new deck
-│   ├── Quiz.js # Renders and controls the quiz logics, a library called <b>react-native-flip-card</b> is used here to ensure the card flipping render nicely
+│   ├── Quiz.js # Renders and controls the quiz logics, a library called <b>react-native-flip-card</b> is used here to ensure the card flipping render    nicely
 │   └── Splash.js # Custom view, introduces the developer and project name for a second before the app starts
-├── utils
-│   ├── _decks.js # Stores the DECK_STORAGE_KEY for AsyncStorage, the sample deck and also deck parsing function
-│   ├── api.js # Controlling AsyncStorage operations
-│   ├── colors.js # Stores color codes
-│   └── notifications.js # Stores the notifications code to clear / set notifications
-└── App.js # This is the root the app, controlling all the pages/routes.
+└── utils
+    ├── _decks.js # Stores the DECK_STORAGE_KEY for AsyncStorage, the sample deck and also deck parsing function
+    ├── api.js # Controlling AsyncStorage operations
+    ├── colors.js # Stores color codes
+    └── notifications.js # Stores the notifications code to clear / set notifications
