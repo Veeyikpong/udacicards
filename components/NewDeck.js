@@ -12,6 +12,10 @@ class NewDeck extends React.Component{
 		deckTitle:''
 	}
 
+	componentWillUnmount(){
+		Keyboard.dismiss(0);
+	}
+
 	addNewDeck = () => {
 		const {dispatch} = this.props
 		const deckTitle = this.state.deckTitle
@@ -40,24 +44,28 @@ class NewDeck extends React.Component{
 
 				addNewDeck(newDeck)
 				.then(()=>dispatch(addDeck(newDeck)))
-				.then(this.showSuccessMessage)
-				.then(Keyboard.dismiss())
+				.then(()=>this.textInput.clear())
+				.then(()=>Keyboard.dismiss())
+				/*Put a timeout to ensure keyboard dismiss after alert is shown*/
+				.then(setTimeout(()=>this.showSuccessMessage(deckTitle),100))
 			}
 		}
 	}
 
-	showSuccessMessage = () => {
+	showSuccessMessage = (newDeckTitle) => {
 		Alert.alert(
 		  'New Deck Added successfully!',
 		  '',
 		  [
-		    {text: 'OK', onPress: () => {this.props.navigation.navigate('Decks')}},
+		    {text: 'OK', onPress: () => {this.props.navigation.navigate('DeckDetails',{deckTitle:newDeckTitle})}},
 		  ],
 		  { cancelable: false }
 		)
 	}
 
 	render(){
+		const {deckTitle} = this.state
+
 		return(
 			<KeyboardAvoidingView behavior="padding" style={styles.container}>
 				{/*TouchableWithoutFeedback here is to auto dismiss keyboard when user press outside of the textinput, improve user experience alot :)*/}
@@ -66,7 +74,7 @@ class NewDeck extends React.Component{
 						<SimpleLineIcons style={styles.helloIcon} name='emotsmile' size={80} color={darkBlue}/>
 						<Text style={styles.helloText} >Hello</Text>
 						<Text style={styles.title} >What is the title of your new deck?</Text>
-						<TextInput style={styles.deckTextInput} placeholder="Deck Title" onChangeText={(text)=>{this.setState({deckTitle:text})}}/>
+						<TextInput style={styles.deckTextInput} placeholder="Deck Title" ref={input => {this.textInput = input}} onChangeText={(text)=>{this.setState({deckTitle:text})}}/>
 						<TouchableOpacity style={styles.submitBtn} onPress={this.addNewDeck}>
 							<Text style={styles.btnText}>Submit</Text>
 						</TouchableOpacity>
@@ -88,14 +96,14 @@ const styles = StyleSheet.create({
 		alignSelf:'center'
 	},
 	helloText:{
-		fontSize:50,
+		fontSize:40,
 		color:darkBlue,
 		marginBottom:10,
 		fontWeight:'bold',
 		alignSelf:'center'
 	},
 	title:{
-		fontSize:35,
+		fontSize:30,
 		color:black,
 		marginBottom:10,
 		fontWeight:'bold',
@@ -103,7 +111,7 @@ const styles = StyleSheet.create({
 	},
 	deckTextInput:{
 		padding:10,
-		fontSize:30,
+		fontSize:25,
 		borderColor:black,
 		borderWidth:1,
 		borderRadius:10,

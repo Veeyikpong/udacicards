@@ -5,6 +5,7 @@ import {black,gray,white,darkBlue,red,warmBlue} from '../utils/colors'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 import {deleteDeck as deleteDeckAPI}  from '../utils/api'
 import {getDeckByTitle, deleteDeck} from '../actions'
+import {AppLoading} from 'expo'
 
 class DeckDetails extends React.Component{
 
@@ -57,7 +58,7 @@ class DeckDetails extends React.Component{
 		const {deck} = this.props
 
 		if(!deck){
-			return <Text>asd</Text>
+			return <AppLoading/>
 		}
 
 		return(
@@ -66,7 +67,7 @@ class DeckDetails extends React.Component{
 					<MaterialCommunityIcons
 						style={styles.icon}
 						name={'cards'}
-						color={dar}
+						color={darkBlue}
 						size={80}
 					/>
 					<Text style={styles.deckTitle}>

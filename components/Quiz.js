@@ -59,6 +59,15 @@ class Quiz extends React.Component{
 		}
 	}
 
+	restartQuiz(){
+		this.setState({
+			currentCardIndex:0,
+			correctCardCount:0,
+			cardFlip:false,
+			quizCompleted:false,
+		})
+	}
+
 	done(){
 		this.props.navigation.goBack()
 	}
@@ -78,6 +87,9 @@ class Quiz extends React.Component{
 					<Text style={styles.correctValueText}>{(correctCardCount/cards.length*100).toFixed(2)}%</Text>
 					<Text style={styles.correctText}>Correct Questions:</Text>
 					<Text style={styles.correctValueText}>{correctCardCount} out of {cards.length}</Text>
+					<TouchableOpacity style={styles.restartQuizBtn} onPress={()=>this.restartQuiz()}>
+						<Text style={styles.flipCardBtnText}>Restart Quiz</Text>
+					</TouchableOpacity>
 					<TouchableOpacity style={styles.doneBtn} onPress={()=>this.done()}>
 						<Text style={styles.flipCardBtnText}>Done</Text>
 					</TouchableOpacity>
@@ -252,6 +264,19 @@ const styles = StyleSheet.create({
 	},
 	doneBtn:{
 		backgroundColor:warmBlue,
+		borderColor: 'transparent',
+		borderRadius:10,
+		borderWidth:1,
+		padding:10,
+		paddingLeft:30,
+		paddingRight:30,
+		marginBottom:10,
+		alignSelf:'baseline',
+		alignSelf:'center',
+		marginTop:50
+	},
+	restartQuizBtn:{
+		backgroundColor:darkBlue,
 		borderColor: 'transparent',
 		borderRadius:10,
 		borderWidth:1,

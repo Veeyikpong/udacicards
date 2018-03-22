@@ -7,10 +7,10 @@ import {darkBlue,white} from '../utils/colors'
 class Splash extends React.Component{
 
 	componentDidMount(){
-		/*Put a 2 seconds delay to display splash screen*/
+		/*Put a 1 seconds delay to display splash screen*/
 		setTimeout( () => {
      		this.navigateToHomescreen();
-  		},2000);
+  		},1000);
 	}
 
 	navigateToHomescreen(){
@@ -32,7 +32,7 @@ class Splash extends React.Component{
 				<MaterialCommunityIcons name='cards-playing-outline' size={80} color={white}/>
 				<Text style={styles.text}>UdaciCards</Text>
 				<Text style={styles.text}>Developed by Pong Vee Yik</Text>
-				<Text style={styles.text}>@Udacity</Text>
+				<Text style={styles.text}>@ Udacity React Programme</Text>
 			</View>
 		)
 	}

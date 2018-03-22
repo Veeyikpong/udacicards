@@ -1,10 +1,12 @@
 import React from 'react'
-import {View,Text,StyleSheet,TouchableOpacity} from 'react-native'
+import {View,Text,StyleSheet,TouchableOpacity,Keyboard} from 'react-native'
 import {white,black,gray,red,warmBlue,lightBlue} from '../utils/colors'
 import {MaterialIcons} from '@expo/vector-icons'
 
 class Deck extends React.Component{
-
+	componentDidMount(){
+		Keyboard.dismiss()
+	}
 	render(){
 		const {selectedDeck,navigation} = this.props
 		return(
