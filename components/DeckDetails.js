@@ -67,7 +67,7 @@ class DeckDetails extends React.Component{
 					<MaterialCommunityIcons
 						style={styles.icon}
 						name={'cards'}
-						color={black}
+						color={darkBlue}
 						size={80}
 					/>
 					<Text style={styles.deckTitle}>
@@ -114,7 +114,8 @@ const styles = StyleSheet.create({
 		fontSize:40,
 		fontWeight:'bold',
 		alignSelf:'center',
-		marginBottom:10
+		marginBottom:10,
+		color:darkBlue
 	},
 	cardsCount:{
 		fontSize:30,
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
 		alignSelf:'center'
 	},
 	startQuizBtn:{
-		backgroundColor:black,
+		backgroundColor:darkBlue,
 		borderColor:'transparent',
 		borderRadius:10,
 		borderWidth:1,

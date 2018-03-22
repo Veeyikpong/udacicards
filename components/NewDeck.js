@@ -4,6 +4,7 @@ import {black,darkBlue,white} from '../utils/colors'
 import {addNewDeck} from '../utils/api'
 import {connect} from 'react-redux'
 import {addDeck} from '../actions'
+import {SimpleLineIcons} from '@expo/vector-icons'
 
 class NewDeck extends React.Component{
 
@@ -65,6 +66,7 @@ class NewDeck extends React.Component{
 				{/*TouchableWithoutFeedback here is to auto dismiss keyboard when user press outside of the textinput, improve user experience alot :)*/}
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
 					<View>
+						<SimpleLineIcons style={styles.helloIcon} name='emotsmile' size={80} color={darkBlue}/>
 						<Text style={styles.helloText} >Hello</Text>
 						<Text style={styles.title} >What is the title of your new deck?</Text>
 						<TextInput style={styles.deckTextInput} placeholder="Deck Title" onChangeText={(text)=>{this.setState({deckTitle:text})}}/>
@@ -84,6 +86,9 @@ const styles = StyleSheet.create({
 		marginRight:30,
 		marginLeft:30,
 		justifyContent:'center',
+	},
+	helloIcon:{
+		alignSelf:'center'
 	},
 	helloText:{
 		fontSize:50,

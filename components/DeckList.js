@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {receiveDecks} from '../actions'
 import Deck from './Deck'
 import {AppLoading} from 'expo'
+import {clearNotification, setLocalNotification} from '../utils/notifications'
 
 class DeckList extends React.Component{
 
@@ -14,17 +15,18 @@ class DeckList extends React.Component{
 
 		getDecks()
 		.then(decks=>dispatch(receiveDecks(decks)))
+
+		/*
+		To make sure to remind user if first time using, without even enter the quiz
+		*/
+		clearNotification()
+		.then(setLocalNotification)
 	}
 
-renderItem = ({item}) => {
-// return(<View>
-//     	<Text style={styles.title}>{item.title}</Text>
-//     	<Text style={styles.title}>{item.description}</Text>
-//     	</View>)
-
-	return(
-		<Deck selectedDeck={item} title={item.title} cardsCount={item.cards.length} navigation={this.props.navigation}/>
-	)
+	renderItem = ({item}) => {
+		return(
+			<Deck selectedDeck={item} title={item.title} cardsCount={item.cards.length} navigation={this.props.navigation}/>
+		)
   }
 
 	render(){

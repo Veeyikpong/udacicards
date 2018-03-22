@@ -10,8 +10,9 @@ import DeckDetails from './components/DeckDetails'
 import Quiz from './components/Quiz'
 import NewDeck from './components/NewDeck'
 import NewCard from './components/NewCard'
-import {white,purple} from './utils/colors'
+import {white,darkBlue} from './utils/colors'
 import {MaterialCommunityIcons,MaterialIcons} from '@expo/vector-icons'
+import Splash from './components/Splash'
 
 function UdaciStatusBar({backgroundColor, ...props}){
   return(
@@ -42,16 +43,16 @@ const Tabs = TabNavigator({
   navigationOptions:{
     headerTintColor:white,
     headerStyle:{
-        backgroundColor:purple,
-        marginTop:-50,
+        backgroundColor:darkBlue,
+        marginTop: Platform.OS === 'ios'? -50:-30
       },
   },
   tabBarOptions:{
-    activeTintColor: Platform.OS === 'ios' ? purple:white,
+    activeTintColor: Platform.OS === 'ios' ? darkBlue:white,
     style:{
       height:56,
       marginBottom:-15,
-      backgroundColor: Platform.OS === 'ios'?white:purple,
+      backgroundColor: Platform.OS === 'ios'?white:darkBlue,
       shadowOffset:{
         width:0,
         height:3,
@@ -63,6 +64,17 @@ const Tabs = TabNavigator({
 })
 
 const MainNavigator = StackNavigator({
+  SplashScreen:
+  {
+    screen: Splash,
+    navigationOptions:{
+      headerStyle:{
+        backgroundColor:darkBlue,
+        marginTop: Platform.OS === 'ios'? -50:-30,
+        borderBottomWidth: 0,
+      }
+    }
+  },
   Home:{
     screen: Tabs
   },
@@ -72,8 +84,8 @@ const MainNavigator = StackNavigator({
       headerBackTitle: " ",
       headerTintColor:white,
       headerStyle:{
-        backgroundColor:purple,
-        marginTop:-50,
+        backgroundColor:darkBlue,
+        marginTop: Platform.OS === 'ios'? -50:-30
       }
     }
   },
@@ -82,8 +94,8 @@ const MainNavigator = StackNavigator({
     navigationOptions:{
       headerTintColor:white,
       headerStyle:{
-        backgroundColor:purple,
-        marginTop:-50,
+        backgroundColor:darkBlue,
+        marginTop: Platform.OS === 'ios'? -50:-30
       }
     }
   },
@@ -93,8 +105,8 @@ const MainNavigator = StackNavigator({
       title:"Add Card",
       headerTintColor:white,
       headerStyle:{
-        backgroundColor:purple,
-        marginTop:-50,
+        backgroundColor:darkBlue,
+        marginTop: Platform.OS === 'ios'? -50:-30
       }
     }
   }

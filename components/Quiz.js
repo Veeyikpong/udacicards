@@ -3,6 +3,7 @@ import {Text,View,StyleSheet,TouchableOpacity,Platform} from 'react-native'
 import {gray,red,green,white,lightBlue,warmBlue,darkBlue} from '../utils/colors'
 import FlipCard from 'react-native-flip-card'
 import {EvilIcons} from '@expo/vector-icons'
+import {clearNotification, setLocalNotification} from '../utils/notifications'
 
 class Quiz extends React.Component{
 
@@ -50,6 +51,9 @@ class Quiz extends React.Component{
 				cardFlip:false
 			})
 		}else{
+			clearNotification()
+			.then(setLocalNotification)
+
 			this.setState({
 				quizCompleted:true
 			})
@@ -72,7 +76,7 @@ class Quiz extends React.Component{
 					<Text style={styles.congratulationText}>Congratulations!</Text>
 					<Text style={styles.completedText}>You've completed the quiz.</Text>
 					<Text style={styles.correctText}>Correct Percentage:</Text>
-					<Text style={styles.correctValueText}>{correctCardCount/cards.length*100}%</Text>
+					<Text style={styles.correctValueText}>{(correctCardCount/cards.length*100).toFixed(2)}%</Text>
 					<Text style={styles.correctText}>Correct Questions:</Text>
 					<Text style={styles.correctValueText}>{correctCardCount} out of {cards.length}</Text>
 					<TouchableOpacity style={styles.doneBtn} onPress={()=>this.done()}>
@@ -93,7 +97,7 @@ class Quiz extends React.Component{
 				<FlipCard
 					style={styles.card}
 					friction={6}
-					perspective={1500}
+					perspective={2000}
 					flipHorizontal={true}
 					flipVertical={false}
 					flip={cardFlip}

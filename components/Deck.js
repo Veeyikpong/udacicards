@@ -1,6 +1,7 @@
 import React from 'react'
 import {View,Text,StyleSheet,TouchableOpacity} from 'react-native'
-import {white,black,gray} from '../utils/colors'
+import {white,black,gray,red, warmBlue,lightBlue} from '../utils/colors'
+import {MaterialIcons} from '@expo/vector-icons'
 
 class Deck extends React.Component{
 
@@ -12,6 +13,7 @@ class Deck extends React.Component{
 				'DeckDetails',
 				{deckTitle:selectedDeck.title}
 				)}>
+				<MaterialIcons name='card-giftcard' size={35}/>
 				<Text style={styles.title}>
 					{selectedDeck.title}
 				</Text>
@@ -30,10 +32,9 @@ const styles = StyleSheet.create({
 		justifyContent:'center',
 		alignItems:'center',
 		backgroundColor: white,
-		padding:50,
-		borderColor:black,
+		padding:35,
+		borderColor:warmBlue,
 		borderWidth:1,
-		borderRadius:3,
 		borderBottomWidth:0,
 		shadowRadius:3,
 		shadowOpacity:0.8,
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
 		shadowOffset:{
 			width:0,
 			height:3,
-		}
+		},
 	},
 	title:{
 		fontSize:35,
