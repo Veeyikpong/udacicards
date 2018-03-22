@@ -4,15 +4,15 @@ import {connect} from 'react-redux'
 import {black,gray,white,darkBlue,red,warmBlue} from '../utils/colors'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
 import {deleteDeck as deleteDeckAPI}  from '../utils/api'
-import {deleteDeck} from '../actions'
+import {getDeckByTitle, deleteDeck} from '../actions'
 
 class DeckDetails extends React.Component{
 
 	static navigationOptions = ({navigation}) => {
-		const {deck} = navigation.state.params
+		const {deckTitle} = navigation.state.params
 
 		return{
-			title: `${deck.title}`
+			title: `${deckTitle}`
 		}
 	}
 
@@ -55,7 +55,11 @@ class DeckDetails extends React.Component{
 
 	render(){
 		const {navigation} = this.props
-		const {deck} = navigation.state.params
+		const {deck} = this.props
+
+		if(!deck){
+			return <Text>asd</Text>
+		}
 
 		return(
 			<View style={styles.container}>
@@ -164,8 +168,11 @@ const styles = StyleSheet.create({
 })
 
 
-function mapStateToProps (decks) {
-  return {decks}
+function mapStateToProps (decks, {navigation}) {
+	const {deckTitle} = navigation.state.params
+
+	  return {deck:decks[deckTitle],
+		decks}
 }
 
 export default connect(mapStateToProps,null)(DeckDetails)

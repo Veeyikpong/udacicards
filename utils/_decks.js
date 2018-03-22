@@ -18,7 +18,7 @@ function initializeWithSampleDecks(){
 			]
 		},
 		Javascript: {
-			title:'JavaScript',
+			title:'Javascript',
 			cards:[
 				{
 					question: 'What is a closure?',

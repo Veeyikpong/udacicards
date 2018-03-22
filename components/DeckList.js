@@ -9,10 +9,6 @@ import {AppLoading} from 'expo'
 
 class DeckList extends React.Component{
 
-state = {
-	decks: {},
-  }
-
 	componentWillMount(){
 		const {dispatch} = this.props
 
@@ -68,10 +64,6 @@ const styles = StyleSheet.create({
 })
 
 function mapStateToProps (decks) {
-	console.log(decks)
-	Object.values(decks).map(deck=>{
-		console.log(deck.title)
-	})
   return {decks}
 }
 

@@ -42,7 +42,7 @@ class NewCard extends React.Component{
 		  'New card added successfully!',
 		  '',
 		  [
-		    {text: 'OK', onPress: () => {this.props.navigation.navigate('Decks')}},
+		    {text: 'OK', onPress: () => {this.props.navigation.goBack()}},
 		  ],
 		  { cancelable: false }
 		)

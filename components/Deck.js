@@ -10,7 +10,7 @@ class Deck extends React.Component{
 			<View>
 			<TouchableOpacity style={styles.container} onPress={()=>navigation.navigate(
 				'DeckDetails',
-				{deck:selectedDeck}
+				{deckTitle:selectedDeck.title}
 				)}>
 				<Text style={styles.title}>
 					{selectedDeck.title}
@@ -34,7 +34,14 @@ const styles = StyleSheet.create({
 		borderColor:black,
 		borderWidth:1,
 		borderRadius:3,
-		marginBottom:1,
+		borderBottomWidth:0,
+		shadowRadius:3,
+		shadowOpacity:0.8,
+		shadowColor:'rgba(0,0,0,0.24)',
+		shadowOffset:{
+			width:0,
+			height:3,
+		}
 	},
 	title:{
 		fontSize:35,
