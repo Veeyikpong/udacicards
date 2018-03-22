@@ -24,7 +24,6 @@ export function deleteDeck(deleteDeck){
 	return AsyncStorage.getItem(DECK_STORAGE_KEY)
 		.then((results)=>{
 			const decks = JSON.parse(results)
-			console.log(decks[deleteDeck.title])
 
 			decks[deleteDeck.title] = undefined
 			delete decks[deleteDeck.title]

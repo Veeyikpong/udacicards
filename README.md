@@ -61,11 +61,13 @@ This application has been tested throughly and is working fine on <b>IPhone X</b
 ✓ Pressing on a deck in the list should generate an animation, and the app should route to an individual deck view.
 
 ### Deck Details View / Individual Deck View
-✓ Includes the deck title, number of cards in the deck, Option to start a quiz for that deck, Option to add a new question to the deck
+✓ Includes the deck title, number of cards in the deck, Option to start a quiz for that deck, Option to add a new question to the deck, and also Option to delete the deck.
 
 ✓ Pressing the 'Add Card' will lead the user to create a new card for the deck
 
 ✓ Pressing the 'Start Quiz' will start the quiz. Validation is performed here to check if there is no card in the deck, error will be prompted and quiz will not be started.
+
+✓ Pressing the 'Delete this deck' will delete the deck and return back to deck list view.
 
 ### Add New Card View
 ✓ Includes fields for a question and an answer, together with a submit button
