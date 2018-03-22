@@ -6,9 +6,9 @@
     "description":"Best quiz app ever",
     "slug":"udacicards",
     "version":"1.0",
-    "icon":"https://tylermcginnis.com/udacifitness-512.png",
+    "icon":"./logo.png",
     "notification":{
-    	"icon":"https://tylermcginnis.com/udacifitness-45.png"
+    	"icon":"./logo.png"
     },
     "ios":{
     	"bundleIdentifier":"org.udacifitness.exp",
