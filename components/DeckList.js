@@ -37,7 +37,6 @@ class DeckList extends React.Component{
 			return <AppLoading/>
 		}
 
-
 		return(
 			<View style={styles.container}>
 				<FlatList style={styles.list}

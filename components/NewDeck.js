@@ -20,15 +20,14 @@ class NewDeck extends React.Component{
 
 		/*Make sure there is no duplicate title / key in the decks*/
 		Object.keys(decks).map((deck)=>{
-		if(decks[deck].title === deckTitle){
+			if(decks[deck].title === deckTitle){
 				foundDeckWithSameTitle = true
 			}
 		})
 
 		if(foundDeckWithSameTitle){
 			Alert.alert('Deck with same title already exist. Please use another title.','')
-		}
-		else{
+		}else{
 			if(deckTitle === ''){
 				Alert.alert('Please enter deck title')
 			}else{
@@ -48,7 +47,6 @@ class NewDeck extends React.Component{
 	}
 
 	showSuccessMessage = () => {
-
 		Alert.alert(
 		  'New Deck Added successfully!',
 		  '',
@@ -61,7 +59,6 @@ class NewDeck extends React.Component{
 
 	render(){
 		return(
-
 			<KeyboardAvoidingView behavior="padding" style={styles.container}>
 				{/*TouchableWithoutFeedback here is to auto dismiss keyboard when user press outside of the textinput, improve user experience alot :)*/}
 				<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>

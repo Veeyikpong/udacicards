@@ -19,11 +19,9 @@ class NewCard extends React.Component{
 
 		if(question === '' && answer === ''){
 			Alert.alert('Please enter question and answer for this card')
-		}
-		else if(question === ''){
+		}else if(question === ''){
 			Alert.alert('Please enter question for this card')
-		}
-		else if(answer === ''){
+		}else if(answer === ''){
 			Alert.alert('Please enter answer for this card')
 		}else{
 			const card = {

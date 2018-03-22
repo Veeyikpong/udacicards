@@ -26,7 +26,7 @@ class DeckDetails extends React.Component{
 	startQuiz = (deck) => {
 		if(deck.cards.length <= 0){
 			Alert.alert('No cards in this deck. Please add card before you start the quiz.')
-		}else{
+		} else{
 			this.props.navigation.navigate(
 				'Quiz',
 				{deck:deck}
@@ -50,7 +50,6 @@ class DeckDetails extends React.Component{
 		  ],
 		  { cancelable: false }
 		)
-
 	}
 
 	render(){
@@ -67,7 +66,7 @@ class DeckDetails extends React.Component{
 					<MaterialCommunityIcons
 						style={styles.icon}
 						name={'cards'}
-						color={darkBlue}
+						color={dar}
 						size={80}
 					/>
 					<Text style={styles.deckTitle}>
@@ -172,8 +171,10 @@ const styles = StyleSheet.create({
 function mapStateToProps (decks, {navigation}) {
 	const {deckTitle} = navigation.state.params
 
-	  return {deck:decks[deckTitle],
-		decks}
+	  return {
+	  	deck:decks[deckTitle],
+			decks
+		}
 }
 
 export default connect(mapStateToProps,null)(DeckDetails)

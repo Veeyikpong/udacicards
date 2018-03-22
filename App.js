@@ -64,8 +64,7 @@ const Tabs = TabNavigator({
 })
 
 const MainNavigator = StackNavigator({
-  SplashScreen:
-  {
+  SplashScreen:{
     screen: Splash,
     navigationOptions:{
       headerStyle:{
@@ -116,10 +115,10 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={createStore(reducer)}>
-      <View style={{flex:1}}>
-      <UdaciStatusBar backgroundColor='#000000' barStyle='light-content'/>
-        <MainNavigator/>
-      </View>
+        <View style={{flex:1}}>
+          <UdaciStatusBar backgroundColor='#000000' barStyle='light-content'/>
+          <MainNavigator/>
+        </View>
       </Provider>
     );
   }

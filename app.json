@@ -11,10 +11,10 @@
     	"icon":"./logo.png"
     },
     "ios":{
-    	"bundleIdentifier":"org.udacifitness.exp",
+    	"bundleIdentifier":"com.veeyikpong.udacicards",
     },
     "android":{
-    	"package":"org.udacifitness.exp",
+    	"package":"com.veeyikpong.udacicards",
     }
   }
 }

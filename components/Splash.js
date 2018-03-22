@@ -7,6 +7,7 @@ import {darkBlue,white} from '../utils/colors'
 class Splash extends React.Component{
 
 	componentDidMount(){
+		/*Put a 2 seconds delay to display splash screen*/
 		setTimeout( () => {
      		this.navigateToHomescreen();
   		},2000);
@@ -28,10 +29,10 @@ class Splash extends React.Component{
 	render(){
 		return(
 			<View style={styles.container}>
-			<MaterialCommunityIcons name='cards-playing-outline' size={80} color={white}/>
-			<Text style={styles.text}>UdaciCards</Text>
-			<Text style={styles.text}>Developed by Pong Vee Yik</Text>
-			<Text style={styles.text}>@Udacity</Text>
+				<MaterialCommunityIcons name='cards-playing-outline' size={80} color={white}/>
+				<Text style={styles.text}>UdaciCards</Text>
+				<Text style={styles.text}>Developed by Pong Vee Yik</Text>
+				<Text style={styles.text}>@Udacity</Text>
 			</View>
 		)
 	}

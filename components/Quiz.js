@@ -37,7 +37,6 @@ class Quiz extends React.Component{
 			correctCardCount:correctCardCount+1
 		})
 
-		console.log(correctCardCount)
 		this.nextCard()
 	}
 
@@ -94,49 +93,47 @@ class Quiz extends React.Component{
 					</Text>
 				</View>
 				<View style={styles.content}>
-				<FlipCard
-					style={styles.card}
-					friction={6}
-					perspective={2000}
-					flipHorizontal={true}
-					flipVertical={false}
-					flip={cardFlip}
-					clickable={false}
-					onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}>
-				  {/* Face Side */}
+					<FlipCard
+						style={styles.card}
+						friction={6}
+						perspective={2000}
+						flipHorizontal={true}
+						flipVertical={false}
+						flip={cardFlip}
+						clickable={false}
+						onFlipEnd={(isFlipEnd)=>{console.log('isFlipEnd', isFlipEnd)}}>
 
-					<View style={styles.content}>
-						<Text style={styles.contentText}>
-							{cards[currentCardIndex].question}
-						</Text>
-						<TouchableOpacity style={styles.flipCardBtn} onPress={()=>this.flipCard()}>
-							<Text style={styles.flipCardBtnText}>Answer</Text>
-						</TouchableOpacity>
-					</View>
-
-				  {/* Back Side */}
-				  <View style={styles.content}>
-						<View style={styles.questionAnswer}>
+					  {/* Face Side */}
+						<View style={styles.content}>
 							<Text style={styles.contentText}>
-								{cards[currentCardIndex].answer}
+								{cards[currentCardIndex].question}
 							</Text>
 							<TouchableOpacity style={styles.flipCardBtn} onPress={()=>this.flipCard()}>
-								<Text style={styles.flipCardBtnText}>Question</Text>
+								<Text style={styles.flipCardBtnText}>Answer</Text>
 							</TouchableOpacity>
 						</View>
-						<View style={styles.bottom}>
-							<TouchableOpacity style={styles.correctBtn} onPress={()=>this.correct()}>
-								<Text style={styles.btnText}>Correct</Text>
-							</TouchableOpacity>
-							<TouchableOpacity style={styles.incorrectBtn} onPress={()=>this.nextCard()}>
-								<Text style={styles.btnText}>Incorrect</Text>
-							</TouchableOpacity>
-						</View>
-					</View>
 
-				</FlipCard>
+					  {/* Back Side */}
+					  <View style={styles.content}>
+							<View style={styles.questionAnswer}>
+								<Text style={styles.contentText}>
+									{cards[currentCardIndex].answer}
+								</Text>
+								<TouchableOpacity style={styles.flipCardBtn} onPress={()=>this.flipCard()}>
+									<Text style={styles.flipCardBtnText}>Question</Text>
+								</TouchableOpacity>
+							</View>
+							<View style={styles.bottom}>
+								<TouchableOpacity style={styles.correctBtn} onPress={()=>this.correct()}>
+									<Text style={styles.btnText}>Correct</Text>
+								</TouchableOpacity>
+								<TouchableOpacity style={styles.incorrectBtn} onPress={()=>this.nextCard()}>
+									<Text style={styles.btnText}>Incorrect</Text>
+								</TouchableOpacity>
+							</View>
+						</View>
+					</FlipCard>
 				</View>
-
 			</View>
 		)
 	}
